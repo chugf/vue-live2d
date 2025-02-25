@@ -53,8 +53,9 @@
 </template>
 
 <script>
-// import './lib/live2d.min.js' // [fix: [Github-22]不能被vite构建的问题](https://github.com/evgo2017/vue-live2d/pull/22)
-import Live2dLibURL from './lib/live2d.min.js?url'
+import './lib/live2d.min.js'
+// import Live2dLibURL from './lib/live2d.min.js?url' // [fix: [Github-22]不能被vite构建的问题](https://github.com/evgo2017/vue-live2d/pull/22)
+// 用最新的 vue-cli 测试vue2和vue3项目，用 npm run vue@latest 测试vue3 项目，均会报错 Error in mounted hook，故 revert 相关修复
 
 import tips from './options/tips'
 
@@ -148,8 +149,8 @@ export default {
       }]
     }
   },
-  async mounted () {
-    await import(Live2dLibURL);
+  mounted () {
+    // await import(Live2dLibURL);  // [fix: [Github-22]不能被vite构建的问题](https://github.com/evgo2017/vue-live2d/pull/22)
     [this.modelPath, this.modelTexturesId] = this.model
     this.loadModel()
     this.$nextTick(() => {
