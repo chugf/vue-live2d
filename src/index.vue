@@ -81,8 +81,7 @@ export default {
       type: String
     },
     apiPath: {
-      // 注意：这是我服务器目前部署的 api 服务，若更新服务地址会在 README.md 说明
-      default: 'https://evgo2017.com/api/live2d-static-api/indexes',
+      default: './live2d-static-api/indexes',
       type: String
     },
     model: {

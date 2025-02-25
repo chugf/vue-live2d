@@ -1,43 +1,21 @@
-# vue-live2d
+# vue-live2d 看板
 
 [![version](https://img.shields.io/npm/v/vue-live2d)](https://npm.js) ![license](https://img.shields.io/github/license/evgo2017/vue-live2d) [![downloads](https://img.shields.io/npm/dt/vue-live2d)](<https://www.npmjs.com/package/vue-live2d> ) [![fork](https://img.shields.io/github/forks/evgo2017/vue-live2d?style=social)](https://github.com/evgo2017/vue-live2d)
 
-vue 看板娘
-
 ![logo](https://github.com/evgo2017/vue-live2d/blob/master/public/logo.png)
 
-可直接在 vue 项目中直接引用此包，即可应用看板娘，目前包含不少功能配置。
+在 vue 项目中直接引用此包，即可应用。支持 vue2 和 vue3。
 
-## 一、使用
+## 一、效果浏览
 
-### 1. 在线浏览效果
+### 1. 在线浏览
 
-#### 个人网站应用
+| 配置项    | 含义                           |
+| --------- | ------------------------------ |
+| 个人部署      | https://vue-live2d.demo.evgo2017.com/                |
+| Github 部署     | https://evgo2017.github.io/vue-live2d/page/index.html                |
 
-访问速度快：
-
-https://evgo2017.com/repo/vue-live2d
-
-#### 使用示例
-
-部署在 github 上:
-
-https://evgo2017.github.io/vue-live2d/page/index.html
-
-### 2. 项目引入
-
-```shell
-npm install vue-live2d
-
-// 在组件中引入
-import vueLive2d from 'vue-live2d'
-
-// 组件中的使用方法具体参考 `example/App.vue` 文件
-```
-
-### 3. 本地浏览
-
-其中包含源码，`example/App.vue` 为使用示例。
+### 2. 本地浏览
 
 ```shell
 git clone https://github.com/evgo2017/vue-live2d.git
@@ -46,20 +24,25 @@ npm install
 npm run serve
 ```
 
+## 二、项目引入
+
+```shell
+npm install vue-live2d
+
+// 在组件中引入
+import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项目中 `example/App.vue` 文件
+```
+
 ## 二、配置参数
 
 ### 1. 参数说明
 
-> 注意 apiPath 是我服务器的地址，提供模型和服装支持，若更新服务地址会在 README.md 说明。
->
-> 同时此 api 服务是我的 [ive2d-static-api](https://github.com/evgo2017/live2d-static-api) 项目，liv2d 静态 API。欢迎使用和 star。 
-
 | 配置项    | 含义                           | 类型   | 默认                                   |
 | --------- | ------------------------------ | ------ | -------------------------------------- |
+| apiPath   | 更换模型的请求地址             | String | `./live2d-static-api/indexes`        |
 | size      | 模型宽度和高度                 | Number | 255                                    |
 | width     | 模型宽度                       | Number | 0                                      |
 | height    | 模型高度                       | Number | 0                                      |
-| apiPath   | 更换模型的请求地址             | String | https://evgo2017.com/api/live2d-static-api/indexes         |
 | model     | 默认显示的模型，[模型号，服装号] | Array  | ['Potion-Maker/Pio', 'school-2017-costume-yello'] |
 | direction | 模型方位（left 或者 right） | String | left（其他字符串均表示 right）         |
 | tipPosition | 提示框位置（top 或者 bottom） | String | top |
@@ -69,6 +52,20 @@ npm run serve
 
 ### 2. 部分具体说明
 
+#### apiPath
+
+加载模型时是通过请求此 API 地址获得数据。
+
+① [live2d-static-api](https://github.com/evgo2017/live2d-static-api)：我写的 live2d 静态 API，原理和部署 vue 项目相同。欢迎使用和 star。
+
+将文件在 `public` 下就可以使用了。
+
+![logo](https://github.com/evgo2017/vue-live2d/blob/master/public/apiPath.png)
+
+也可部署在其它位置，如 `https://xxx.com/api/live2d-static-api/indexes`。
+
+② [fghrsh/live2d_api](https://github.com/fghrsh/live2d_api)：动态 API。
+
 #### width height size
 
 这三个参数放在一起说，它们都是用来调整模型宽高的。width 只调整宽度，height 只调整高度，size 同时调整宽高为同一值。
@@ -76,10 +73,6 @@ npm run serve
 优先级：width = height > size。可以说 width 和 height 参数会覆盖 size 参数设置的对应值。
 
 设置 size 是为了减少重新加载模型的次数。
-
-#### apiPath
-
-加载模型时是通过请求此 API 地址获得数据，也可[自行搭建](https://github.com/fghrsh/live2d_api)，进而进一步设置模型。
 
 #### model
 
