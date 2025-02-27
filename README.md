@@ -2,7 +2,7 @@
 
 [![version](https://img.shields.io/npm/v/vue-live2d)](https://npm.js) ![license](https://img.shields.io/github/license/evgo2017/vue-live2d) [![downloads](https://img.shields.io/npm/dt/vue-live2d)](<https://www.npmjs.com/package/vue-live2d> ) [![fork](https://img.shields.io/github/forks/evgo2017/vue-live2d?style=social)](https://github.com/evgo2017/vue-live2d)
 
-![logo](https://github.com/evgo2017/vue-live2d/blob/master/public/logo.png)
+![logo](https://github.com/evgo2017/vue-live2d/raw/master/public/logo.png)
 
 在 vue 项目中直接引用此包，即可应用。支持 vue2 和 vue3。
 
@@ -60,7 +60,7 @@ import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项
 
 将文件在 `public` 下就可以使用了。
 
-![logo](https://github.com/evgo2017/vue-live2d/blob/master/public/apiPath.png)
+![apiPath](https://github.com/evgo2017/vue-live2d/raw/master/public/apiPath.png)
 
 也可部署在其它位置，如 `https://xxx.com/api/live2d-static-api/indexes`。
 
