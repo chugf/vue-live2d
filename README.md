@@ -24,22 +24,25 @@ npm install
 npm run serve
 ```
 
-## 二、项目引入
+## 二、项目使用
 
 ```shell
+// 1. 引入项目
 npm install vue-live2d
 
-// 在组件中引入
-import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项目中 `example/App.vue` 文件
+// 2. 在组件中引入
+import vueLive2d from 'vue-live2d' // 在组件中的使用方式，参考项目中 `example/App.vue` 文件
+
+// 3. 根据个人使用情况，配置 apiPath 参数，具体参考下文。
 ```
 
-## 二、配置参数
+## 三、配置参数
 
 ### 1. 参数说明
 
 | 配置项    | 含义                           | 类型   | 默认                                   |
 | --------- | ------------------------------ | ------ | -------------------------------------- |
-| apiPath   | 更换模型的请求地址             | String | `./live2d-static-api/indexes`        |
+| **apiPath** | 更换模型的请求地址             | String | `./live2d-static-api/indexes`        |
 | size      | 模型宽度和高度                 | Number | 255                                    |
 | width     | 模型宽度                       | Number | 0                                      |
 | height    | 模型高度                       | Number | 0                                      |
@@ -50,21 +53,23 @@ import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项
 | homePage  | 可打开某页面的地址             | String | https://github.com/evgo2017/vue-live2d |
 | customId  | 自定义 id                      | String | vue-live2d-main                        |
 
-### 2. 部分具体说明
+### 2. 具体说明
 
 #### apiPath
 
-加载模型时是通过请求此 API 地址获得数据。
+请求此 API 地址加载模型数据。API 具有两种部署方式。
 
-① [live2d-static-api](https://github.com/evgo2017/live2d-static-api)：我写的 live2d 静态 API，原理和部署 vue 项目相同。欢迎使用和 star。
-
-将文件在 `public` 下就可以使用了。
+① 部署方法一：使用 [live2d-static-api](https://github.com/evgo2017/live2d-static-api) 静态 API。将模型文件放在项目的 `public` 目录下即可。参考下图：
 
 ![apiPath](https://github.com/evgo2017/vue-live2d/raw/master/public/apiPath.png)
 
-也可部署在其它位置，如 `https://xxx.com/api/live2d-static-api/indexes`。
+② 部署方法二：使用 [live2d-static-api](https://github.com/evgo2017/live2d-static-api) 静态 API。将这些文件部署到其它可访问到的静态地址，如 `apiPath="https://raw.githubusercontent.com/evgo2017/live2d-static-api/refs/heads/main/indexes"`。
 
-② [fghrsh/live2d_api](https://github.com/fghrsh/live2d_api)：动态 API。
+③ 部署方法三：使用 [fghrsh/live2d_api](https://github.com/fghrsh/live2d_api) 动态 API。
+
+> 常见错误：`Uncaught SyntaxError: Unexpected token '<', "<!doctype "... is not valid JSON`，[Issue25](https://github.com/evgo2017/vue-live2d/issues/25)。
+>
+> 错误原因：apiPath 配置错误。需要修改 apiPath 配置，参考上述内容。
 
 #### width height size
 
@@ -108,7 +113,7 @@ import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项
 
 这部分切换应该是与核心库有关，综合考虑不继续完善此功能。
 
-## 三、核心库
+## 四、核心库
 
 核心库 `live2d.min.js` 的文件内容，是 Live2D 官网发布的 Live2D_SDK_WEBGL_2.1 SDK 中的`live2d.min.js` + `Live2DFramework.js` + `sampleApp1` ，以及该库作者代码。库已梳理明白，但库作者未知。
 
@@ -116,7 +121,7 @@ import vueLive2d from 'vue-live2d' // 在组件中的使用方式，可参考项
 
 > 从库代码层次来看：core -> framework -> app -> vue-live2d（看板娘）。vue-live2d 目前属于定制内容。
 
-## 四、参考资料
+## 五、参考资料
 
 [1] https://github.com/fghrsh/live2d_demo
 
